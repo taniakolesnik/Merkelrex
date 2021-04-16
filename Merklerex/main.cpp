@@ -6,6 +6,9 @@
 //
 
 #include <iostream>
+#include <map>
+
+std::map<int,void(*)()> menu;
 
 static void printMenu() {
     std::cout << "1: Print help" << std::endl;
@@ -60,34 +63,26 @@ static void gotoNextTimeframe() {
 }
 
 static void processUserOption(int userOption) {
-    switch (userOption){
-        case 1:
-            printHelp();
-            break;
-        case 2:
-            printMarketStats();
-            break;
-        case 3:
-            enterAsk();
-            break;
-        case 4:
-            enterBid();
-            break;
-        case 5:
-            printWallet();
-            break;
-        case 6:
-            gotoNextTimeframe();
-            break;
-        default: std::cout << "Invalid choice. Choose 1-6:" << std::endl; // bad intput
+    if (userOption > 0 && userOption<= menu.size()){
+        menu[userOption]();
+    } else {
+        std::cout << "Invalid choice. Choose 1-6:" << std::endl; // bad intput
     }
     std::cout << "====================" << std::endl;
 }
 
 int main(){
     
+    //set options
+    menu[1] = printHelp;
+    menu[2] = printMarketStats;
+    menu[3] = enterAsk;
+    menu[4] = enterBid;
+    menu[5] = printWallet;
+    menu[6] = gotoNextTimeframe;
+    
     while (true) {
-
+        
     // 1. print help
         printMenu();
     // read user reply
