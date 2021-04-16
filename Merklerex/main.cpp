@@ -7,29 +7,19 @@
 
 #include <iostream>
 #include <map>
+#include <string>
 
-std::map<int,void(*)()> menu;
+std::map<int,std::pair<void(*)(),std::string>> menu;
 
 static void printMenu() {
-    std::cout << "1: Print help" << std::endl;
-    // 2. print exchange stats
-    std::cout << "2: Print exchange stats" << std::endl;
-    // 3. make and offer
-    std::cout << "3: Place an ask" << std::endl;
-    // 4. make a bid
-    std::cout << "4: Place a bid" << std::endl;
-    // 5. print wallet
-    std::cout << "5: Print wallet" << std::endl;
-    // 6. continue
-    std::cout << "6: Continue" << std::endl;
-    
+
+    for (int i=1; i<=menu.size(); i++) {
+        std::cout << menu[i].second << std::endl;
+    }
 }
 
 static int getUserOption() {
-    // ask user to choose oprion:
-    // std::cout << "====================" << std::endl;
     std::cout << "Type in 1-6:" << std::endl;
-    
     int userOption;
     std::cin >> userOption;
     std::cout << "====================" << std::endl;
@@ -63,26 +53,29 @@ static void gotoNextTimeframe() {
 }
 
 static void processUserOption(int userOption) {
-    if (userOption > 0 && userOption<= menu.size()){
-        menu[userOption]();
+    // if menu is changed in main function this functions is not affected.
+    if (userOption >= 0 && userOption<= menu.size()){
+        menu[userOption].first();
     } else {
         std::cout << "Invalid choice. Choose 1-6:" << std::endl; // bad intput
     }
     std::cout << "====================" << std::endl;
 }
 
+static void setMenu() {
+    menu[1]=std::make_pair(printHelp, std::string("1: Print help"));
+    menu[2]=std::make_pair(printMarketStats, std::string("2: Print exchange stats"));
+    menu[3]=std::make_pair(enterAsk, std::string("3: Place an ask"));
+    menu[4]=std::make_pair(enterBid, std::string("4: Place a bid"));
+    menu[5]=std::make_pair(printWallet, std::string("5: Print wallet"));
+    menu[6]=std::make_pair(gotoNextTimeframe, std::string("6: Continue"));
+}
+
 int main(){
-    
-    //set options
-    menu[1] = printHelp;
-    menu[2] = printMarketStats;
-    menu[3] = enterAsk;
-    menu[4] = enterBid;
-    menu[5] = printWallet;
-    menu[6] = gotoNextTimeframe;
+
+    setMenu();
     
     while (true) {
-        
     // 1. print help
         printMenu();
     // read user reply
