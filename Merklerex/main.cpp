@@ -10,9 +10,58 @@
 #include <string>
 
 std::map<int,std::pair<void(*)(),std::string>> menu;
+enum class OrderBookType {bid, ask};
+
+//prototypes
+static void printMenu();
+static int getUserOption();
+static void setMenu();
+static void processUserOption(int);
+
+class OrderBookEntry{
+    
+public:
+    double price;
+    double ammount;
+    std::string timestamp;
+    std::string product;
+    OrderBookType orderType;
+    
+    OrderBookEntry(double price,
+                   double ammount,
+                   std::string timestamp,
+                   std::string product,
+                   OrderBookType orderType){
+       this->price = price;
+       this->ammount = ammount;
+       this->timestamp = timestamp;
+       this->product = product;
+       this->orderType = orderType;
+    };
+    
+};
+
+
+int main(){
+
+    OrderBookEntry orderOne{1000,1000,"test","test",OrderBookType::ask};
+    std::cout << "price is " << orderOne.price << std::endl;
+//    setMenu();
+//
+//    while (true) {
+//    // 1. print help
+//        printMenu();
+//    // read user reply
+//        int userOption = getUserOption();
+//    // check reply
+//        processUserOption(userOption);
+//    }
+    return 0;
+}
+
+
 
 static void printMenu() {
-
     for (int i=1; i<=menu.size(); i++) {
         std::cout << menu[i].second << std::endl;
     }
@@ -71,17 +120,3 @@ static void setMenu() {
     menu[6]=std::make_pair(gotoNextTimeframe, std::string("6: Continue"));
 }
 
-int main(){
-
-    setMenu();
-    
-    while (true) {
-    // 1. print help
-        printMenu();
-    // read user reply
-        int userOption = getUserOption();
-    // check reply
-        processUserOption(userOption);
-    }
-    return 0;
-}
