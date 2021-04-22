@@ -10,8 +10,8 @@
 
 #include <stdio.h>
 #include <string>
-#include <vector>
 #include <map>
+
 
 #endif /* MerkelMain_hpp */
 
@@ -21,13 +21,17 @@ class MerkelMain{
     
 public:
     MerkelMain();
-    // menu, request, proceed reply
-    static void setMenu() ;
     /**call this to start the sim */
     static void init() ;
+    
+private:
+    
+    // menu, request, proceed reply
+    static void setMenu() ;
     static void printMenu();
     static int getUserOption();
     static void processUserOption(int userOption);
+    static void loadOrderBook() ;
     // actions
     static void printHelp() ;
     static void printMarketStats() ;
@@ -35,5 +39,5 @@ public:
     static void enterBid();
     static void printWallet() ;
     static void gotoNextTimeframe();
-    
+    //std::vector<OrderBookEntry> orders;
 };

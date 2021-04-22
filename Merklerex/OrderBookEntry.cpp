@@ -17,3 +17,4 @@ ammount(ammount),
 timestamp(timestamp),
 product(product),
 orderType(orderType){};
+;

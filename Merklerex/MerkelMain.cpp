@@ -9,12 +9,16 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <vector>
+#include "OrderBookEntry.hpp"
 
 std::map<int,std::pair<void(*)(),std::string>> menu;
+std::vector<OrderBookEntry> orders;
 
 MerkelMain::MerkelMain(){};
 
 void MerkelMain::init() {
+    loadOrderBook();
     setMenu();
     int input;
     while (true) {
@@ -22,6 +26,13 @@ void MerkelMain::init() {
         input = getUserOption();
         processUserOption(input);
     }
+}
+
+void MerkelMain::loadOrderBook() {
+    
+    orders.push_back({0.02186052,0.05, "2020/03/17 17:01:24.884492","ETH/BTC",OrderBookType::bid});
+    orders.push_back({0.02184944,130, "2020/03/17 17:01:24.884492","ETH/BTC",OrderBookType::bid});
+    orders.push_back({0.02185561,9.14455526, "2020/03/17 17:01:24.884492","ETH/BTC",OrderBookType::bid});
 }
 
 void MerkelMain::printMenu() {
@@ -45,7 +56,10 @@ void MerkelMain::printHelp() {
 }
 
 void MerkelMain::printMarketStats() {
-    std::cout << "Market looks good" << std::endl;
+    std::cout << "OrderBook contains:" << std::endl;
+    for (OrderBookEntry order : orders){
+        std::cout << "price: " << order.price << std::endl;
+    }
 }
 
 void MerkelMain::enterOffer() {
