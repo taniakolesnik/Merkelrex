@@ -14,6 +14,16 @@ std::map<int,std::pair<void(*)(),std::string>> menu;
 
 MerkelMain::MerkelMain(){};
 
+void MerkelMain::init() {
+    setMenu();
+    int input;
+    while (true) {
+        printMenu();
+        input = getUserOption();
+        processUserOption(input);
+    }
+}
+
 void MerkelMain::printMenu() {
     for (int i=1; i<=menu.size(); i++) {
         std::cout << menu[i].second << std::endl;

@@ -21,9 +21,10 @@ class MerkelMain{
     
 public:
     MerkelMain();
-    
     // menu, request, proceed reply
     static void setMenu() ;
+    /**call this to start the sim */
+    static void init() ;
     static void printMenu();
     static int getUserOption();
     static void processUserOption(int userOption);
