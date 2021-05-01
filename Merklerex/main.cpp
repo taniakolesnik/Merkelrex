@@ -12,17 +12,8 @@
 int main(){
     
     MerkelMain app{};
-    
     app.init();
-    
-//    while (true) {
-//        // 1. print help
-//        app.printMenu();
-//        // read user reply
-//        int userOption =  app.getUserOption();
-//        // check reply
-//        app.processUserOption(userOption);
-//    }
+
     return 0;
 }
 

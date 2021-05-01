@@ -7,19 +7,13 @@
 
 #include "MerkelMain.hpp"
 #include <iostream>
-#include <map>
 #include <string>
-#include <vector>
-#include "OrderBookEntry.hpp"
+#include "CSVReader.hpp"
 
-std::map<int,std::pair<void(*)(),std::string>> menu;
 std::vector<OrderBookEntry> orders;
-
-MerkelMain::MerkelMain(){};
 
 void MerkelMain::init() {
     loadOrderBook();
-    setMenu();
     int input;
     while (true) {
         printMenu();
@@ -29,16 +23,17 @@ void MerkelMain::init() {
 }
 
 void MerkelMain::loadOrderBook() {
+    orders = CSVReader::readCSV("/Users/tania/Documents/UoL/OOP/Merklerex/Merklerex/20200317.csv");
     
-    orders.push_back({0.02186052,0.05, "2020/03/17 17:01:24.884492","ETH/BTC",OrderBookType::bid});
-    orders.push_back({0.02184944,130, "2020/03/17 17:01:24.884492","ETH/BTC",OrderBookType::bid});
-    orders.push_back({0.02185561,9.14455526, "2020/03/17 17:01:24.884492","ETH/BTC",OrderBookType::bid});
 }
 
 void MerkelMain::printMenu() {
-    for (int i=1; i<=menu.size(); i++) {
-        std::cout << menu[i].second << std::endl;
-    }
+    std::cout << "1: Print help" << std::endl;
+    std::cout << "2: Print exchange stats" << std::endl;
+    std::cout << "3: Place an ask" << std::endl;
+    std::cout << "4: Place a bid"<< std::endl;
+    std::cout << "5: Print wallet" << std::endl;
+    std::cout << "6: Continue" << std::endl;
 }
 
 int MerkelMain::getUserOption() {
@@ -80,21 +75,27 @@ void MerkelMain::gotoNextTimeframe() {
 
 void MerkelMain::processUserOption(int userOption) {
     // if menu is changed in main function this functions is not affected.
-    if (userOption >= 0 && userOption<= menu.size()){
-        menu[userOption].first();
-    } else {
+    if (userOption == 1){
+        MerkelMain::printHelp();
+    }
+    else if (userOption == 2){
+        MerkelMain::printMarketStats();
+    }
+    else if (userOption == 3){
+        MerkelMain::enterOffer();
+    }
+    else if (userOption == 4){
+        MerkelMain::enterBid();
+    }
+    else if (userOption == 5){
+        MerkelMain::printWallet();
+    }
+    else if (userOption == 6){
+        MerkelMain::gotoNextTimeframe();
+    }
+    else {
         std::cout << "Invalid choice. Choose 1-6:" << std::endl; // bad intput
     }
     std::cout << "====================" << std::endl;
 }
-
-void MerkelMain::setMenu() {
-    menu[1] = std::make_pair(MerkelMain::printHelp, std::string("1: Print help"));
-    menu[2] = std::make_pair(MerkelMain::printMarketStats, std::string("2: Print exchange stats"));
-    menu[3] = std::make_pair(MerkelMain::enterOffer, std::string("3: Place an ask"));
-    menu[4] = std::make_pair(MerkelMain::enterBid, std::string("4: Place a bid"));
-    menu[5] = std::make_pair(MerkelMain::printWallet, std::string("5: Print wallet"));
-    menu[6] = std::make_pair(MerkelMain::gotoNextTimeframe, std::string("6: Continue"));
-}
-
 

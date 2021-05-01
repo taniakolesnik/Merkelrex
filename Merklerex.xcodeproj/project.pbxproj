@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2356F8522628DE2A003A0998 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2356F8512628DE2A003A0998 /* main.cpp */; };
+		235E60A02638AB3200115C3F /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235E609F2638AB3200115C3F /* test.cpp */; };
+		235E60B8263D66B100115C3F /* CSVReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235E60B6263D66B100115C3F /* CSVReader.cpp */; };
+		237CAC2D2631AB83009F1394 /* MerkelMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237CAC2B2631AB83009F1394 /* MerkelMain.cpp */; };
+		23A28D442630D51A008FD4CC /* OrderBookEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23A28D422630D51A008FD4CC /* OrderBookEntry.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,14 @@
 /* Begin PBXFileReference section */
 		2356F84E2628DE2A003A0998 /* Merklerex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Merklerex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2356F8512628DE2A003A0998 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		235E609F2638AB3200115C3F /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		235E60B6263D66B100115C3F /* CSVReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSVReader.cpp; sourceTree = "<group>"; };
+		235E60B7263D66B100115C3F /* CSVReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSVReader.hpp; sourceTree = "<group>"; };
+		235E60C7263D8BED00115C3F /* 20200317.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 20200317.csv; sourceTree = "<group>"; };
+		237CAC2B2631AB83009F1394 /* MerkelMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MerkelMain.cpp; sourceTree = "<group>"; };
+		237CAC2C2631AB83009F1394 /* MerkelMain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MerkelMain.hpp; sourceTree = "<group>"; };
+		23A28D422630D51A008FD4CC /* OrderBookEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBookEntry.cpp; sourceTree = "<group>"; };
+		23A28D432630D51A008FD4CC /* OrderBookEntry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderBookEntry.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +69,15 @@
 		2356F8502628DE2A003A0998 /* Merklerex */ = {
 			isa = PBXGroup;
 			children = (
+				235E60C7263D8BED00115C3F /* 20200317.csv */,
 				2356F8512628DE2A003A0998 /* main.cpp */,
+				23A28D422630D51A008FD4CC /* OrderBookEntry.cpp */,
+				23A28D432630D51A008FD4CC /* OrderBookEntry.hpp */,
+				237CAC2B2631AB83009F1394 /* MerkelMain.cpp */,
+				237CAC2C2631AB83009F1394 /* MerkelMain.hpp */,
+				235E609F2638AB3200115C3F /* test.cpp */,
+				235E60B6263D66B100115C3F /* CSVReader.cpp */,
+				235E60B7263D66B100115C3F /* CSVReader.hpp */,
 			);
 			path = Merklerex;
 			sourceTree = "<group>";
@@ -118,6 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235E60B8263D66B100115C3F /* CSVReader.cpp in Sources */,
+				237CAC2D2631AB83009F1394 /* MerkelMain.cpp in Sources */,
+				235E60A02638AB3200115C3F /* test.cpp in Sources */,
+				23A28D442630D51A008FD4CC /* OrderBookEntry.cpp in Sources */,
 				2356F8522628DE2A003A0998 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

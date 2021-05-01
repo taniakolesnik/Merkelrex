@@ -13,19 +13,24 @@
 
 #endif /* OrderBookEntry_hpp */
 
-enum class OrderBookType {bid, ask};
+enum class OrderBookType {bid, ask, unknown};
+
 class OrderBookEntry{
     
 public:
+    
     double price;
     double ammount;
     std::string timestamp;
     std::string product;
     OrderBookType orderType;
-    
+
     OrderBookEntry(double price,
                    double ammount,
                    std::string timestamp,
                    std::string product,
                    OrderBookType orderType);
+    
+    static OrderBookType stringToOrderBookType(std::string s);
+    
 };
